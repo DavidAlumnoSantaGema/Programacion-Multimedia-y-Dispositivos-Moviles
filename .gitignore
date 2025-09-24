@@ -1,0 +1,60 @@
+# Archivos y carpetas generados por Android Studio
+**/.idea/
+**/.gradle/
+**/*.iml
+**/build/
+**/captures/
+**/.externalNativeBuild/
+
+# Archivos del sistema operativo
+**/.DS_Store
+**/Thumbs.db
+
+# Archivos de log y configuración de ejecución
+**/*.log
+**/local.properties
+
+# Archivos de caché y otros generados
+**/.cxx/
+**/*.apk
+**/*.ap_
+**/*.dex
+**/*.class
+**/*.jar
+**/*.so
+**/*.o
+**/*.obj
+
+# Archivos de configuración de empaquetado
+**/gen/
+**/bin/
+**/out/
+
+# NDK / CMake builds
+**/*.cmake
+**/CMakeCache.txt
+**/CMakeFiles/
+
+# Archivos de lint
+**/lint/intermediates/
+**/lint/generated/
+
+# Archivos de configuración de Gradle (según el entorno local)
+**/gradle-app.setting
+**/gradle-wrapper.jar
+**/gradle-wrapper.properties
+
+# Ignore Jetpack Compose compiler metrics
+**/compose-compiler-metrics/
+**/compose-compiler-reports/
+
+# Archivos de firma de release (opcional, si no se comparten)
+**/keystore.properties
+**/*.jks
+
+# Configuración específica de VS Code (si usas VS Code también)
+**/.vscode/
+
+# Archivos de crashlytics/fabric (si usas Firebase Crashlytics)
+**/crashlytics-build.properties
+**/fabric.properties
