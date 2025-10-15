@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity
 
     private void Reset()
     {
-        equation = "";
+        equation = "0";
         addedCommaLeft = false;
         addedCommaRight = false;
         addedOp = false;
@@ -92,6 +92,8 @@ public class MainActivity extends AppCompatActivity
 
     private void BorrarUno()
     {
+        if (equation.isEmpty()) return;
+
         String newString = "";
 
         char lastChar = equation.charAt(equation.length() - 1);
