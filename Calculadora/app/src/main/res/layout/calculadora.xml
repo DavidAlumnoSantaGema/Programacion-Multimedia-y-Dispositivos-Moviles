@@ -13,7 +13,7 @@
             android:layout_span="4"
             android:textSize="30dp"
             android:gravity="center|right"
-            android:text="0"/>
+            android:id="@+id/view"/>
     </TableRow>
     <TableRow>
         <FrameLayout
@@ -26,6 +26,7 @@
             android:layout_margin="2dp"
             android:backgroundTint="#4C7BE9"
             android:layout_span="1"
+            android:id="@+id/boton1"
             android:text="1"/>
         <Button
             android:layout_width="wrap_content"
@@ -33,6 +34,7 @@
             android:layout_margin="2dp"
             android:backgroundTint="#4C7BE9"
             android:layout_span="1"
+            android:id="@+id/boton2"
             android:text="2"/>
         <Button
             android:layout_width="wrap_content"
@@ -40,6 +42,7 @@
             android:layout_margin="2dp"
             android:backgroundTint="#4C7BE9"
             android:layout_span="1"
+            android:id="@+id/boton3"
             android:text="3"/>
         <Button
             android:layout_width="wrap_content"
@@ -47,6 +50,7 @@
             android:layout_margin="2dp"
             android:backgroundTint="#90B6FF"
             android:layout_span="1"
+            android:id="@+id/botonDiv"
             android:text="/"/>
     </TableRow>
     <TableRow>
@@ -56,6 +60,7 @@
             android:layout_margin="2dp"
             android:backgroundTint="#4C7BE9"
             android:layout_span="1"
+            android:id="@+id/boton4"
             android:text="4"/>
         <Button
             android:layout_width="wrap_content"
@@ -63,6 +68,7 @@
             android:layout_margin="2dp"
             android:backgroundTint="#4C7BE9"
             android:layout_span="1"
+            android:id="@+id/boton5"
             android:text="5"/>
         <Button
             android:layout_width="wrap_content"
@@ -70,6 +76,7 @@
             android:layout_margin="2dp"
             android:backgroundTint="#4C7BE9"
             android:layout_span="1"
+            android:id="@+id/boton6"
             android:text="6"/>
         <Button
             android:layout_width="wrap_content"
@@ -77,6 +84,7 @@
             android:layout_margin="2dp"
             android:backgroundTint="#90B6FF"
             android:layout_span="1"
+            android:id="@+id/botonMult"
             android:text="*"/>
     </TableRow>
     <TableRow>
@@ -86,6 +94,7 @@
             android:layout_margin="2dp"
             android:backgroundTint="#4C7BE9"
             android:layout_span="1"
+            android:id="@+id/boton7"
             android:text="7"/>
         <Button
             android:layout_width="wrap_content"
@@ -93,6 +102,7 @@
             android:layout_margin="2dp"
             android:backgroundTint="#4C7BE9"
             android:layout_span="1"
+            android:id="@+id/boton8"
             android:text="8"/>
         <Button
             android:layout_width="wrap_content"
@@ -100,6 +110,7 @@
             android:layout_margin="2dp"
             android:backgroundTint="#4C7BE9"
             android:layout_span="1"
+            android:id="@+id/boton9"
             android:text="9"/>
         <Button
             android:layout_width="wrap_content"
@@ -107,6 +118,7 @@
             android:layout_margin="2dp"
             android:backgroundTint="#90B6FF"
             android:layout_span="1"
+            android:id="@+id/botonMenos"
             android:text="-"/>
     </TableRow>
     <TableRow>
@@ -116,6 +128,7 @@
             android:layout_margin="2dp"
             android:backgroundTint="#4C7BE9"
             android:layout_span="1"
+            android:id="@+id/boton0"
             android:text="0"/>
         <Button
             android:layout_width="wrap_content"
@@ -123,6 +136,7 @@
             android:layout_margin="2dp"
             android:backgroundTint="#90B6FF"
             android:layout_span="1"
+            android:id="@+id/botonComa"
             android:text="."/>
         <Button
             android:layout_width="wrap_content"
@@ -130,6 +144,7 @@
             android:layout_margin="2dp"
             android:backgroundTint="#90B6FF"
             android:layout_span="1"
+            android:id="@+id/botonIgual"
             android:text="="/>
         <Button
             android:layout_width="wrap_content"
@@ -137,7 +152,26 @@
             android:layout_margin="2dp"
             android:backgroundTint="#90B6FF"
             android:layout_span="1"
+            android:id="@+id/botonSuma"
             android:text="+"/>
+    </TableRow>
+    <TableRow>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:backgroundTint="#4C7BE9"
+            android:layout_span="2"
+            android:id="@+id/botonC"
+            android:text="C"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:backgroundTint="#90B6FF"
+            android:layout_span="2"
+            android:id="@+id/botonAC"
+            android:text="AC"/>
     </TableRow>
 
 </TableLayout>
