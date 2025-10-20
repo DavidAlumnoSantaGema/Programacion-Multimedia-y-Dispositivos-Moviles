@@ -121,15 +121,25 @@ public class MainActivity extends AppCompatActivity
 
             newString += character;
         }
-        equation = newString;
+
+        equation = newString.length() > 0 ? newString : "0";
         UpdateReadout();
     }
 
 
     private void AddNumber(int number)
     {
-        if (number == 0 && equation.isEmpty()) return;
-        equation += String.valueOf(number);
+        if (equation.startsWith("0"))
+        {
+            if (number != 0)
+            {
+                equation = String.valueOf(number);
+            }
+        }
+        else
+        {
+            equation += String.valueOf(number);
+        }
         UpdateReadout();
     }
 
