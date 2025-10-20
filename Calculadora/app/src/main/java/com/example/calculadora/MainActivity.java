@@ -14,13 +14,35 @@ import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity
 {
+    /**
+     * El TextView en la zona de la calculadora que muestra la ecuación
+     */
     TextView view;
+    /**
+     * Controla si se ha añadido un operador de operación
+     */
     private boolean addedOp;
+    /**
+     * Controla si se ha añadido coma en el número de la izquierda
+     */
     private boolean addedCommaLeft;
+    /**
+     * Controla si se ha añadido coma en el número de la derecha
+     */
     private boolean addedCommaRight;
+    /**
+     * String donde se guarda la ecuación total
+     */
     String equation = "";
 
 
+    /**
+     * Cambia el layout al que he creado para la calculadora
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -30,6 +52,9 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    /**
+     * Encontramos todos los botones y les asignamos sus eventos.
+     */
     @Override
     protected void onStart()
     {
@@ -74,6 +99,9 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    /**
+     * Método cuando se pulsa AC.
+     */
     private void BorrarTodo()
     {
         Reset();
@@ -81,6 +109,9 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    /**
+     * Reinicia la calculadora a 0, cambia la ecuación y todos los bools
+     */
     private void Reset()
     {
         equation = "0";
@@ -90,6 +121,10 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    /**
+     * Borra el último carácter del string que guarda la ecuación<br>
+     * Lo hace recreando el string entero parando en el penúltimo carácter
+     */
     private void BorrarUno()
     {
         if (equation.isEmpty()) return;
@@ -127,6 +162,11 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    /**
+     * Añade un número al string que guarda la ecucación entera.<br>
+     * Sustituye el 0 default, y no te permite meter 0s a la izquierda.
+     * @param number El número que se quiere añadir a la ecuación
+     */
     private void AddNumber(int number)
     {
         if (equation.startsWith("0"))
@@ -144,18 +184,14 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    private void AddNumber(int number, boolean force)
-    {
-        if (!force && number == 0 && equation.isEmpty()) return;
-        equation += String.valueOf(number);
-        UpdateReadout();
-    }
-
-
+    /**
+     * Añade un operador al string que guarda la ecuación.<br>
+     * Solo permite insertar un operador.
+     * @param operator
+     */
     private void AddOperator(char operator)
     {
-        if (equation.isEmpty()
-                || addedOp
+        if (addedOp
                 || equation.charAt(equation.length() - 1) == '.' ) return;
 
         equation += operator;
@@ -164,13 +200,17 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    /**
+     * Añade la coma deicmal al número que se esté escribiendo.<br>
+     * Solo se permite una coma por número. El número de la izquierda se deja de considerar cuando se escribe un operador y viceversa.
+     */
     private void AddComma()
     {
         if (!addedOp && !addedCommaLeft)
         {
-            if (equation.isEmpty() || !Character.isDigit(equation.charAt(equation.length() - 1)))
+            if (!Character.isDigit(equation.charAt(equation.length() - 1)))
             {
-                AddNumber(0, true);
+                AddNumber(0);
             }
             equation += '.';
             addedCommaLeft = true;
@@ -188,12 +228,20 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    /**
+     * Cambia el texto del TextView al valor de la ecuación.
+     */
     private void UpdateReadout()
     {
         view.setText(equation);
     }
 
 
+    /**
+     * Calcula el resultado a partir del string guardado en ecuación.<br>
+     * Internamente guarda los números de la izquierda y de la derecha, y el operador de la ecuación.<br>
+     * Los dos números luego son operados según el carácter encontrado usando DoOperation
+     */
     private void CalcularResultado()
     {
         if (equation.isEmpty()) return;
@@ -222,14 +270,29 @@ public class MainActivity extends AppCompatActivity
 
 
         }
-        float left = Float.parseFloat(leftNumText);
-        float right = Float.parseFloat(rightNumText);
 
-        view.setText(String.valueOf(DoOperation(left, right, op)));
+        if (rightNumText.isEmpty())
+        {
+            view.setText(leftNumText);
+        }
+        else
+        {
+            float left = Float.parseFloat(leftNumText);
+            float right = Float.parseFloat(rightNumText);
+            view.setText(String.valueOf(DoOperation(left, right, op)));
+        }
+
         Reset();
     }
 
 
+    /**
+     * Hace la operación delimitada por el operador
+     * @param A Primer numero
+     * @param B Segundo numero
+     * @param Op Operador +, -, *, /
+     * @return El resultado de la operación, o NaN si es división entre 0 u operación no soportada.
+     */
     private float DoOperation(float A, float B, char Op)
     {
         switch (Op)
