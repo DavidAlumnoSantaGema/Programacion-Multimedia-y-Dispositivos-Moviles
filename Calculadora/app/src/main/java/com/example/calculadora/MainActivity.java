@@ -273,16 +273,31 @@ public class MainActivity extends AppCompatActivity
 
         if (rightNumText.isEmpty())
         {
-            view.setText(leftNumText);
+            equation = leftNumText;
+            UpdateReadout();
         }
         else
         {
             float left = Float.parseFloat(leftNumText);
             float right = Float.parseFloat(rightNumText);
-            view.setText(String.valueOf(DoOperation(left, right, op)));
-        }
+            String res = String.valueOf(DoOperation(left, right, op));
+            if (res.equals("NaN"))
+            {
+                view.setText("NaN");
+                Reset();
+            }
+            else
+            {
+                if (res.endsWith(".0"))
+                {
+                    res = res.substring(0, res.length() - 2);
+                }
+                Reset();
+                equation = res;
 
-        Reset();
+                UpdateReadout();
+            }
+        }
     }
 
 
