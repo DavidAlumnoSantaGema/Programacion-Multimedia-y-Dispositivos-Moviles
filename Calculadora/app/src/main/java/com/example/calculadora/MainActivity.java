@@ -1,5 +1,6 @@
 package com.example.calculadora;
 
+import android.media.SyncParams;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -191,8 +192,13 @@ public class MainActivity extends AppCompatActivity
      */
     private void AddOperator(char operator)
     {
-        if (addedOp
-                || equation.charAt(equation.length() - 1) == '.' ) return;
+        char character = equation.charAt(equation.length() - 1);
+        if (character == '.') return;
+        else if (addedOp && !Character.isDigit(character))
+        {
+            BorrarUno();
+        }
+        else if (addedOp) return;
 
         equation += operator;
         addedOp = true;
@@ -273,7 +279,14 @@ public class MainActivity extends AppCompatActivity
 
         if (rightNumText.isEmpty())
         {
+            if (leftNumText.endsWith("."))
+            {
+                leftNumText += '0';
+            }
+
+            Reset();
             equation = leftNumText;
+
             UpdateReadout();
         }
         else
