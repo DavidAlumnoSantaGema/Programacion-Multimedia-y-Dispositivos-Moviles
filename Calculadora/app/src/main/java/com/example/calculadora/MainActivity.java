@@ -170,6 +170,14 @@ public class MainActivity extends AppCompatActivity
      */
     private void AddNumber(int number)
     {
+        if (addedOp)
+        {
+            for (int i = 0; i < equation.length(); i++)
+            {
+                char character = equ
+            }
+        }
+
         if (equation.startsWith("0"))
         {
             if (number != 0)
