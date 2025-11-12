@@ -61,6 +61,7 @@
         android:textColor="@color/black"
         android:paddingTop="20dp"/>
     <RadioGroup
+        android:id="@+id/radioGroupMetodoPago"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <RadioButton
@@ -87,6 +88,14 @@
         android:stepSize="1"
         android:rating="0"
         android:id="@+id/ratingBar"/>
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteNombreCamarero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:completionHint="Nombre del camarero que te ha atendido"
+        android:completionThreshold="1"
+        android:inputType="textAutoComplete"/>
+
 
     <TextView
         android:layout_width="wrap_content"
