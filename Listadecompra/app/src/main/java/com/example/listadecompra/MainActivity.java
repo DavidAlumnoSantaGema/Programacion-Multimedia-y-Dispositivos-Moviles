@@ -1,12 +1,17 @@
 package com.example.listadecompra;
 
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -18,6 +23,7 @@ public class MainActivity extends AppCompatActivity
     private ShoppingListAdapter adapter;
     private List<Item> listViewItems;
     private Spinner spinner;
+    Item lastPressedItem;
 
 
     @Override
@@ -37,15 +43,19 @@ public class MainActivity extends AppCompatActivity
 
         int[] icons =
                 {
-                        R.drawable.ic_launcher_background,
-                        R.drawable.ic_launcher_background,
-                        R.drawable.ic_launcher_background
+                        R.drawable.pan,
+                        R.drawable.tomate,
+                        R.drawable.patatas,
+                        R.drawable.platanos,
+                        R.drawable.jabon_manos
                 };
-        String[] titles =
+        int[] titles =
                 {
-                        "pan",
-                        "tomate",
-                        "un kilo de patatas"
+                        R.string.pan,
+                        R.string.tomate,
+                        R.string.kiloPatata,
+                        R.string.platanos,
+                        R.string.jabonManos
                 };
 
         SpinnerAdapter spinnerAdapter = new SpinnerAdapter(this, icons, titles);
@@ -61,15 +71,64 @@ public class MainActivity extends AppCompatActivity
             {
                 Item item = listViewItems.get(i);
 
-                if (item.getNombre().equals(titles[spinner.getSelectedItemPosition()]))
+                if (item.getNombre() == titles[spinner.getSelectedItemPosition()])
                 {
                     item.setCantidad(item.getCantidad() + 1);
                     adapter.notifyDataSetChanged();
                     return;
                 }
             }
-            listViewItems.add(new Item(titles[spinner.getSelectedItemPosition()]));
+            listViewItems.add(new Item
+                            (titles[spinner.getSelectedItemPosition()],
+                            icons[spinner.getSelectedItemPosition()]));
+
             adapter.notifyDataSetChanged();
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                lastPressedItem = (Item) adapter.getItem(position);
+            }
+        });
+
+        registerForContextMenu(listView);
+    }
+
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo)
+    {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_menu, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item)
+    {
+        int id = item.getItemId();
+        if (lastPressedItem != null)
+        {
+            if (id == R.id.action_add)
+            {
+                lastPressedItem.setCantidad(lastPressedItem.getCantidad() + 1);
+            }
+            else if (id == R.id.action_remove)
+            {
+                if (lastPressedItem.getCantidad() > 1)
+                {
+                    lastPressedItem.setCantidad(lastPressedItem.getCantidad() - 1);
+                }
+                else
+                {
+                    adapter.Remove(lastPressedItem);
+                }
+            }
+            adapter.notifyDataSetChanged();
+        }
+        return super.onContextItemSelected(item);
     }
 }

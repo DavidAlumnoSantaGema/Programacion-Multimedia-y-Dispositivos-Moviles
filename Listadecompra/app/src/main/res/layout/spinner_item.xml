@@ -18,6 +18,6 @@
         android:gravity="center"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:text="Dummy"/>
+        android:text="@string/dummy"/>
 
 </LinearLayout>

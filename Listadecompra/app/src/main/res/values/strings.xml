@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Lista de compra</string>
+    <string name="titulo">Elige producto</string>
+    <string name="boton_pedir">Pedir producto</string>
+    <string name="listaTitulo">Lista de la compra</string>
+    <string name="dummy">Dummy</string>
+    <string name="boton_borrar">Eliminar</string>
+    <string name="pan">Pan</string>
+    <string name="tomate">Tomate</string>
+    <string name="kiloPatata">Kilo de patatas</string>
+    <string name="platanos">Platanos</string>
+    <string name="jabonManos">Jabon de manos</string>
 </resources>

@@ -26,6 +26,11 @@ public class ShoppingListAdapter extends BaseAdapter
     }
 
 
+    public void Remove(Item item)
+    {
+        items.remove(item);
+    }
+
     @Override
     public int getCount() {
         return items.size();
@@ -56,7 +61,7 @@ public class ShoppingListAdapter extends BaseAdapter
         TextView cantidad = convertView.findViewById(R.id.cantidadList);
         Button button = convertView.findViewById(R.id.buttonList);
 
-        //imageView.setImageResource(item);
+        imageView.setImageResource(item.getImageID());
         titulo.setText(item.getNombre());
         cantidad.setText(String.valueOf(item.getCantidad()));
 

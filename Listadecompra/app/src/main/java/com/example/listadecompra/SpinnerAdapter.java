@@ -14,9 +14,9 @@ public class SpinnerAdapter extends BaseAdapter
 {
     private Context context;
     private int[] icons;
-    private String[] titles;
+    private int[] titles;
 
-    public SpinnerAdapter(Context context, int[] icons, String[] titles)
+    public SpinnerAdapter(Context context, int[] icons, int[] titles)
     {
         this.context = context;
         this.icons = icons;

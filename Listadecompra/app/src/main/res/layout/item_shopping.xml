@@ -12,14 +12,14 @@
         android:background="@color/material_dynamic_neutral40"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:layout_weight="1"
-        android:paddingStart="10dp">
+        android:paddingHorizontal="10dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:orientation="vertical">
@@ -31,7 +31,7 @@
                 android:gravity="center"
                 android:layout_weight="1"
                 android:textSize="20sp"
-                android:text="Dummy"/>
+                android:text="@string/dummy"/>
 
             <TextView
                 android:id="@+id/cantidadList"
@@ -40,7 +40,7 @@
                 android:gravity="center"
                 android:layout_weight="1"
                 android:textStyle="bold"
-                android:text="Dummy"/>
+                android:text="@string/dummy"/>
 
         </LinearLayout>
 
@@ -50,7 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Eliminar"/>
+            android:focusable="false"
+            android:text="@string/boton_borrar"/>
 
     </LinearLayout>
 
